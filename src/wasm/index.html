@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		
+		<h1><img src="logo.gif" height="50" id="logo">Lua Interpreter</h1>
+		
+		<div class="header-gradient"></div>
+		<div id="text-fields" style="height:300px">
+			<div id="editor" style="flex:auto"></div>
+			<textarea id="output" style="flex:auto" readonly></textarea>
+		</div>
+		
+		<button onclick="lua_exec();">run</button>
+		<button onclick="lua_stop();">stop</button>
+		<button onclick="editor.setText('')">clear</button>
+		<button onclick="saveToFile();">save</button>
+		<select onchange="loadExample(this.value)" value="">
+			<option value="">load example...</option>
+			<option value="hello.lua">hello</option>
+			<option value="globals.lua">globals</option>
+			<option value="bisect.lua">bisect</option>
+			<option value="sieve.lua">sieve</option>
+			<option value="account.lua">account</option>
+			<option value="controller.lua">cube controller</option>
+			<option value="cps.lua">clicks per second</option>
+			<option value="mandelbrot.lua">mandelbrot</option>
+			<option value="conway.lua">conway</option>
+		</select>
+		<a href="#a-about" class="barlink">about</a>
+		<a href="#a-extensions" class="barlink">libraries</a>
+		<a href="#a-copyright" class="barlink">license</a>
+		<br>
+		<p>canvas:</p>
+		<canvas id="canvas" width="650" height="488"></canvas>
+		
+		<h2 id="a-about">about</h2>
+		A Lua interpreter compiled using <a href="https://emscripten.org/">Emscripten</a>. Visit the Lua site <a href="https://www.lua.org/">here</a>.
+		
+		<h2 id="a-extensions">libraries</h2>
+		<b>user</b>
+		<ul>
+			<li>void mousedown(void (listener)(number mousex, number mousey))</li>
+			<li>void mouseup(void (listener)(number mousex, number mousey))</li>
+			<li>void mousemove(void (listener)(number mousex, number mousey))</li>
+			<li>void keydown(void (listener)(int keycode))</li>
+			<li>void keyup(void (listener)(int keycode))</li>
+		</ul>
+		<b>canvas</b>
+		<ul>
+			<li>void applypixels()</li>
+			<li>void arc(number x, number y, number r, number start, number end [, boolean ccw])</li>
+			<li>void beginpath()</li>
+			<li>void beginpixels()</li>
+			<li>void closepath()</li>
+			<li>void drawtext(number x, number y, number size, string text)</li>
+			<li>void fill()</li>
+			<li>void fillrect(number x, number y, number width, number height)</li>
+			<li>number height()</li>
+			<li>void lineto(number x, number y)</li>
+			<li>void moveto(number x, number y)</li>
+			<li>void setfill(int r, int g, int b)</li>
+			<li>void setpixel(int x, int y, int r, int g, int b)</li>
+			<li>void setstroke(int r, int g, int b)</li>
+			<li>void setstrokewidth(number width)</li>
+			<li>void stroke()</li>
+			<li>number width()</li>
+		</ul>
+		
+		<h2 id="a-copyright">license</h2>
+		<p>
+		Copyright &copy; 1994-2021 Lua.org, PUC-Rio.
+		</p>
+		
+		<p>
+		Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+		</p>
+		The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+		<p>
+		THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		</p>
+		
+		<script src="out.js"></script>
+		<script src="editor.js"></script>
+		<script src="main.js"></script>
+	</body>
+</html>
